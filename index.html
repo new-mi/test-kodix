@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodix test</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts end -->
+
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+          <a href="/" class="not-link">
+            <img src="/images/DUCK.png" alt="DUCK">
+          </a>
+        </header>
+        <main class="main">
+
+          <section class="section">
+            <div class="container">
+              <h1 class="title">¡Ay caramba!</h1>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="container">
+              <form class="form" name="car">
+                <div class="form__field form__field_m_fluid">
+                  <div class="control">
+                    <input type="text" class="control__input" required name="name">
+                    <label class="control__label control__label_input">Название</label>
+                  </div>
+                </div>
+                <div class="form__field">
+                  <div class="control">
+                    <input type="text" class="control__input" required name="year">
+                    <label class="control__label control__label_input">Год</label>
+                  </div>
+                </div>
+                <div class="form__field">
+                  <div class="control">
+                    <input type="text" class="control__input" required name="price">
+                    <label class="control__label control__label_input">Цена</label>
+                  </div>
+                </div>
+                <div class="form__field form__field_fluid form__field_m_fluid">
+                  <div class="control">
+                    <input type="text" class="control__input" required name="description">
+                    <label class="control__label control__label_input">Описание</label>
+                  </div>
+                </div>
+                <div class="form__field form__field_m_fluid">
+                  <div class="control">
+                    <label class="control__label">Цвет</label>
+                    <div class="colors colors_label_top">
+                      <label class="colors__item">
+                        <input type="radio" name="color" value="white">
+                        <span class="color color_white"></span>
+                      </label>
+                      <label class="colors__item">
+                        <input type="radio" name="color" value="black">
+                        <span class="color color_black"></span>
+                      </label>
+                      <label class="colors__item">
+                        <input type="radio" name="color" value="grey" checked data-default="true">
+                        <span class="color color_grey"></span>
+                      </label>
+                      <label class="colors__item">
+                        <input type="radio" name="color" value="red">
+                        <span class="color color_red"></span>
+                      </label>
+                      <label class="colors__item">
+                        <input type="radio" name="color" value="green">
+                        <span class="color color_green"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__field">
+                  <div class="dropdown" id="selectFormStatus" data-ddwn>
+                    <div class="dropdown__head control__input" data-ddwn-head>
+                      <input type="hidden" value="" data-ddwn-input name="status" required>
+                      <span class="dropdown__title control__label" data-ddwn-title>Статус</span>
+                      <span class="dropdown__icon">&#x25BE;</span>
+                    </div>
+                    <div class="dropdown__body">
+                      <ul class="dropdown__content">
+                        <li class="dropdown__item dropdown__item_hidden control__label" data-ddwn-option="">Статус</li>
+                        <li class="dropdown__item control__label" data-ddwn-option="in_stock">В наличии</li>
+                        <li class="dropdown__item control__label" data-ddwn-option="pednding">Ожидается</li>
+                        <li class="dropdown__item control__label" data-ddwn-option="out_of_stock">Нет в наличии</li>
+                      </div>
+                    </div>
+                </div>
+                <div class="form__field">
+                  <button class="form__submit">
+                    <span>отправить</span>
+                    <img class="icon" src="images/arrow-right.svg" alt="arrow-right" />
+                  </button>
+                </div>
+
+
+              </form>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="container">
+              <div class="table">
+                <div class="table__title">АВТОМОБИЛИ В НАЛИЧИИ</div>
+                <table class="table__main">
+                  <thead>
+                    <tr>
+                      <th>Название</th>
+                      <th>Год</th>
+                      <th>Цвет</th>
+                      <th>Статус</th>
+                      <th>Цена</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="car-list">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+        </main>
+        <footer class="footer">
+          <p>© 2020 CAPTAIN QUACK <br> Десница тысячелетия и моллюск!</p>
+        </footer>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+$g-font-family-base: 'Roboto', sans-serif
+$g-font-size-base-number: 16
+$g-font-size-base: $g-font-size-base-number * 1px
+$g-line-height-base: 1.3
+$g-font-weight-base: 400
+
+$g-color-dark: #282D30
+$g-color-white: #ffffff
+$g-color-red: #C3002F
+$g-color-grey: #E5E5E5
+$g-color-grey-border: #DADADA
+$g-color-grey-label: #8B8B8B
+
+$g-transition-duration: 0.25s
+
+$breakpoint: 720px
+
+@function pxtorem($size)
+  @return $size/$g-font-size-base-number * 1rem
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+button
+  border: none
+  background: transparent
+  color: inherit
+  font: inherit
+
+a
+  display: inline-flex
+  color: inherit
+
+img
+  max-width: 100%
+
+input
+  font: inherit
+  outline: none
+  border-radius: 0
+
+html
+  font-family: $g-font-family-base
+  font-size: $g-font-size-base
+  line-height: $g-line-height-base
+  font-weight: $g-font-weight-base
+  color: $g-color-dark
+  background-color: $g-color-grey
+
+a
+  &:not(.not-link)
+    transition: color $g-transition-duration
+    &:hover
+      color: $g-color-red
+
+li
+  list-style: none
+
+.page
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+.main
+  flex: 1 0
+
+.container
+  max-width: 100%
+  width: 960px
+  margin: 0 auto
+  padding: 0 10px
+
+.section
+  &:first-of-type
+    margin-top: 55px
+  & + *
+    margin-top: 60px
+
+.header,
+.footer
+  width: 100%
+  height: 102px
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 3px 30px 0
+  background-color: $g-color-dark
+
+.footer
+  text-align: center
+  color: $g-color-white
+  margin-top: 60px
+  p
+    font-size: pxtorem(11)
+
+.title
+  font-size: pxtorem(42)
+  font-weight: 700
+  text-align: center
+
+.control
+  $control: &
+  position: relative
+  vertical-align: top
+  &__input
+    max-width: 100%
+    width: 100%
+    border: 1px solid $g-color-grey-border
+    border-bottom-width: 2px
+    background-color: $g-color-white
+    padding: 10px
+    font-size: pxtorem(18)
+    transition: all $g-transition-duration
+    &:hover
+      border-bottom: 2px solid $g-color-red
+    &:focus
+      border-bottom: 2px solid $g-color-dark
+    &:focus,
+    &:valid
+      & + #{$control}
+        &__label
+          &_input
+            top: -20px
+            transform: translateY(0)
+
+  &__label
+    font-size: pxtorem(14)
+    color: $g-color-grey-label
+    height: 25px
+    padding-bottom: 5px
+    &_input
+      position: absolute
+      left: 10px
+      top: 50%
+      height: 20px
+      padding-bottom: 0
+      transition: all $g-transition-duration
+      transform: translateY(-50%)
+      z-index: 1
+      pointer-events: none
+
+.form
+  display: flex
+  flex-wrap: wrap
+  width: calc(100% + 20px)
+  margin: 0 -10px
+  .form__field
+    width: 33.33%
+    padding: 0 10px 30px
+    &_fluid
+      width: 100%
+
+  &__submit
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    background-color: $g-color-red
+    color: $g-color-white
+    font-weight: 700
+    text-transform: uppercase
+    padding: 4px
+    border-radius: 4px
+    min-height: 44px
+    cursor: pointer
+    &:hover
+      background-color: darken($g-color-red, 5%)
+    .icon
+      margin-left: 12px
+
+.colors
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  margin-bottom: -24px
+  &_label_top
+    margin-top: 12px
+  &__item
+    position: relative
+    margin-right: 24px
+    margin-bottom: 24px
+    cursor: pointer
+  input
+    position: absolute
+    visibility: hidden
+    top: -1px
+    left: -1px
+    &:checked + .color
+      border: 3px solid #C3002F
+
+.color
+  display: inline-block
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  border: 3px solid transparent
+  &_white
+    background-color: $g-color-white
+    border: 1px solid #8B8B8B
+  &_black
+    background-color: #000
+  &_grey
+    background-color: #C4C4C4
+  &_red
+    background-color: #DD1C10
+  &_green
+    background-color: #77CF61
+
+.dropdown
+  $dropdown: &
+  position: relative
+  &.is-active
+    z-index: 10
+    .control__input
+      border-bottom: 2px solid $g-color-dark
+    #{$dropdown}
+      &__body
+        display: block
+  &__head
+    display: flex
+    align-items: center
+    justify-content: space-between
+    cursor: pointer
+  &__title
+    padding: 0
+    height: 20px
+  &__body
+    display: none
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+  &__content
+    background-color: $g-color-white
+    padding: 6px 0
+    border: 1px solid $g-color-grey-border
+    border-top: 0
+  &__item
+    min-height: 20px
+    height: auto
+    padding: 6px 10px
+    cursor: pointer
+    transition: all $g-transition-duration
+    &_hidden
+      display: none
+    &:hover
+      color: $g-color-dark
+    &.is-selected
+      color: $g-color-dark
+      pointer-events: none
+
+.table
+  &__title
+    position: relative
+    font-size: pxtorem(20)
+    font-weight: 700
+    margin-bottom: 30px
+    padding-left: 15px
+    text-transform: uppercase
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      width: 3px
+      height: 18px
+      background-color: $g-color-grey-label
+  table
+    border-collapse: collapse
+    border-radius: 4px 4px 0px 0px
+    overflow: hidden
+    width: 100%
+  thead
+    background-color: $g-color-red
+    color: $g-color-white
+  th
+    font-size: pxtorem(14)
+    text-align: left
+    padding: 0 7px
+    &:first-of-type
+      max-width: 100%
+      padding: 12px 15px
+  tbody
+    font-size: pxtorem(15)
+    font-weight: 300
+    color: #323232
+    tr
+      background-color: #F5F6F6
+      border-bottom: 1px solid #DADADA
+      &:last-child
+        border-bottom-color: transparent
+  li
+    font-size: pxtorem(13)
+    color: $g-color-grey-label
+
+  &__name,
+  &__year,
+  &__color,
+    padding: 16px 7px
+
+  &__status
+    width: 120px
+  &__name
+    padding: 16px 15px
+    ul
+      margin-top: 4px
+
+  &__year
+    width: 50px
+  &__price
+    white-space: nowrap
+    width: 120px
+
+  &__delete
+    padding: 4px 15px
+    background-color: transparent
+    color: $g-color-grey-label
+    font-size: pxtorem(14)
+    font-weight: 400
+    border-radius: 20px
+    cursor: pointer
+    outline: none
+    transition: all $g-transition-duration
+    &:hover
+      background-color: $g-color-dark
+      color: $g-color-white
+  &__color
+    width: 50px
+    text-align: center
+  &__actions
+    text-align: center
+    width: 100px
+
+
+@media (max-width: $breakpoint)
+  .form
+    .form__field
+      width: 50%
+      &_m_fluid
+        width: 100%
+
+  .table
+    table
+      width: calc(100% + 20px)
+      margin: 0 -10px
+      border-radius: 0
+    thead
+      display: none
+    tbody
+      tr
+        position: relative
+        display: flex
+        flex-wrap: wrap
+        padding: 16px 20px
+
+    &__name
+      padding: 0
+      width: 100%
+      margin-bottom: 20px
+      span
+        width: calc(100% - 150px)
+        min-height: 40px
+        display: inline-block
+    &__price
+      position: absolute
+      top: 17px
+      right: 20px
+      width: 100px
+      padding: 0
+    &__color
+      position: absolute
+      top: 16px
+      right: 136px
+      padding: 0
+      min-width: auto
+    &__actions
+      margin-left: auto
+      padding: 0
+    &__status,
+    &__year
+      padding: 2px 20px 0 0
+    &__delete
+      background-color: $g-color-dark
+      color: $g-color-white
+
+  .section
+    &:first-of-type
+      margin-top: 25px
+    & + *
+      margin-top: 30px
